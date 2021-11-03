@@ -20,7 +20,6 @@ public final class Utilities {
      * @return a new set that is the union of the input sets.
      */
     public static <X> Set<X> setUnion(final Set<? extends X> setA, final Set<? extends X> setB) {
-    	Set<X> set= new Coll
         return null;
     }
 
