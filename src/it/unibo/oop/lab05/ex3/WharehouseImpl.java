@@ -2,6 +2,7 @@ package it.unibo.oop.lab05.ex3;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class WharehouseImpl implements Warehouse{
@@ -11,6 +12,7 @@ public class WharehouseImpl implements Warehouse{
 	public WharehouseImpl() {
 		super();
 		this.set = new HashSet<>();
+		//try now
 	}
 
 	@Override
@@ -19,6 +21,7 @@ public class WharehouseImpl implements Warehouse{
 	}
 
 	@Override
+	
 	public Set<String> allNames() {
 		Iterator<Product> it = set.iterator();
 		Set<String> setName = new HashSet<>();
@@ -31,9 +34,7 @@ public class WharehouseImpl implements Warehouse{
 
 	@Override
 	public Set<Product> allProducts() {
-		Set<Product> set1=new HashSet<>();
-		set1.addAll(set);
-		return set1;
+		return new LinkedHashSet<>(this.set);
 	}
 
 	@Override
