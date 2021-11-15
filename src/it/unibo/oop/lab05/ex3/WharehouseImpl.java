@@ -1,62 +1,66 @@
 package it.unibo.oop.lab05.ex3;
 
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class WharehouseImpl implements Warehouse{
-	
-	private Set<Product> set;
-	
-	public WharehouseImpl() {
-		super();
-		this.set = new HashSet<>();
-		//try now
-	}
+/**
+ * Implementation of a warehouse.
+ *
+ */
+public class WharehouseImpl implements Warehouse {
 
-	@Override
-	public void addProduct(Product p) {
-		set.add(p);
-	}
+    private final Set<Product> set = newSet();
 
-	@Override
-	
-	public Set<String> allNames() {
-		Iterator<Product> it = set.iterator();
-		Set<String> setName = new HashSet<>();
-    	
-    	while(it.hasNext()) {
-    		setName.add(it.next().getName());
-    	}
-		return setName;
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public final void addProduct(final Product p) {
+        this.set.add(p);
+    }
 
-	@Override
-	public Set<Product> allProducts() {
-		return new LinkedHashSet<>(this.set);
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public Set<String> allNames() {
+        final Set<String> s = newSet();
+        for (final Product p : this.set) {
+            s.add(p.getName());
+        }
+        return s;
+    }
 
-	@Override
-	public boolean containsProduct(Product p) {
-		Iterator<Product> it = set.iterator();
-		while(it.hasNext()) {
-    		if(p.getName()==it.next().getName()) {
-    			return true;
-    		}
-    	}
-		return false;
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public Set<Product> allProducts() {
+        return newSetFrom(this.set);
+    }
 
-	@Override
-	public double getQuantity(String name) {
-		Iterator<Product> it = set.iterator();
-		while(it.hasNext()) {
-    		if(name==it.next().getName()) {
-    			return it.next().getQuantity();
-    		}
-    	}
-		return -1;
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public final boolean containsProduct(final Product p) {
+        return set.contains(p);
+    }
 
+    /**
+     * {@inheritDoc}
+     */
+    public final double getQuantity(final String name) {
+        for (final var p : this.set) {
+            if (p.getName().equals(name)) {
+                return p.getQuantity();
+            }
+        }
+        return 0;
+    }
+
+    private static <E> Set<E> newSet() {
+        return new LinkedHashSet<>();
+    }
+
+    private static <E> Set<E> newSetFrom(final Collection<E> origin) {
+        return new LinkedHashSet<>(origin);
+    }
 }
