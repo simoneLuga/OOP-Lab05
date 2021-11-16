@@ -35,7 +35,7 @@ public final class UseWarehouse {
         final Product p2 = new ProductImpl(5,"Candy");
         final Product p3 = new ProductImpl(2,"Pop");
 
-        final Warehouse w = new WharehouseImpl();
+        final Warehouse w = new WarehouseImpl();
         w.addProduct(p3);
         w.addProduct(p1);
         w.addProduct(p2);

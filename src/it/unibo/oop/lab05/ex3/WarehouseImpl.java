@@ -8,7 +8,7 @@ import java.util.Set;
  * Implementation of a warehouse.
  *
  */
-public class WharehouseImpl implements Warehouse {
+public class WarehouseImpl implements Warehouse {
 
     private final Set<Product> set = newSet();
 

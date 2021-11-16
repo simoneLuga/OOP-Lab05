@@ -4,7 +4,7 @@ import it.unibo.oop.lab05.ex3.*;
 public class ComparableProduct extends ProductImpl implements Comparable<Product> {
 
 	
-	public ComparableProduct(final String name, final int quantity) {
+	public ComparableProduct(final int quantity,final String name) {
         super(quantity, name);
     }
 
